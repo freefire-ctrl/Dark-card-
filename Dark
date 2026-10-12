@@ -1,0 +1,705 @@
+.glass {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.18);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARK CARD | Glass UI</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #08090c;
+  --panel: rgba(255,255,255,0.055);
+  --border: rgba(255,255,255,0.12);
+  --text: #f7f7fa;
+  --muted: #999ba8;
+  --red: #ff263f;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 90% 10%,
+      rgba(255,38,63,.13), transparent 35%),
+    radial-gradient(ellipse at 5% 55%,
+      rgba(100,50,255,.10), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  padding-bottom: 95px;
+  transition: background .3s, color .3s;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 8px 35px rgba(0,0,0,.18);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 18px;
+  background: rgba(8,9,12,.78);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--red);
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  position: relative;
+  width: 43px;
+  height: 43px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  font-size: 19px;
+}
+
+#cartCount {
+  position: absolute;
+  top: -7px;
+  right: -6px;
+  background: var(--red);
+  color: white;
+  font-size: 11px;
+  border-radius: 50%;
+  min-width: 19px;
+  padding: 4px;
+}
+
+.hero {
+  padding: 30px 18px 20px;
+}
+
+.eyebrow {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 13px;
+}
+
+h1 {
+  font-size: clamp(34px, 9vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  color: var(--red);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 13px;
+  max-width: 330px;
+}
+
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  margin-top: 25px;
+  padding: 22px;
+  min-height: 185px;
+  border-radius: 23px;
+  background:
+    radial-gradient(circle at 90% 10%,
+      rgba(255,255,255,.2), transparent 30%),
+    linear-gradient(130deg, #e91d3e, #790d2b 65%, #210d1a);
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 12px 40px rgba(255,25,60,.13);
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  right: -70px;
+  bottom: -100px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 20px rgba(255,255,255,.04),
+    0 0 0 45px rgba(255,255,255,.04);
+}
+
+.card-top, .card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,.75);
+}
+
+.card-chip {
+  width: 37px;
+  height: 27px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #fff0a5, #c69b42);
+  margin-top: 27px;
+  box-shadow: inset 0 0 0 1px #9c772b;
+}
+
+.card-number {
+  margin: 22px 0;
+  letter-spacing: 3px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-bottom strong {
+  font-size: 13px;
+}
+
+.card-bottom small {
+  color: rgba(255,255,255,.7);
+  font-size: 10px;
+}
+
+.section {
+  padding: 22px 18px 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 17px;
+}
+
+.section-heading h2 {
+  font-size: 20px;
+}
+
+.section-heading small {
+  color: var(--muted);
+}
+
+.filters {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filter {
+  white-space: nowrap;
+  padding: 10px 17px;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.filter.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  padding: 15px 18px;
+}
+
+.product {
+  min-width: 0;
+  padding: 12px;
+  border-radius: 19px;
+  transition: transform .2s, border-color .2s;
+}
+
+.product:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,38,63,.6);
+}
+
+.mini-card {
+  height: 115px;
+  border-radius: 13px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.mini-card.red {
+  background: linear-gradient(135deg,#ff3856,#771127);
+}
+
+.mini-card.purple {
+  background: linear-gradient(135deg,#754cff,#211050);
+}
+
+.mini-card.blue {
+  background: linear-gradient(135deg,#3188ff,#142f79);
+}
+
+.mini-card.gold {
+  background: linear-gradient(135deg,#b88a34,#48300d);
+}
+
+.mini-card small {
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: .8;
+}
+
+.mini-card b {
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+.product h3 {
+  font-size: 14px;
+  margin-top: 13px;
+}
+
+.product .desc {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 13px;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add-btn {
+  background: rgba(255,38,63,.13);
+  border: 1px solid rgba(255,38,63,.35);
+  color: #ff6679;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.add-btn:active {
+  transform: scale(.95);
+}
+
+.bottom-nav {
+  position: fixed;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 13px 8px calc(13px + env(safe-area-inset-bottom));
+  background: rgba(10,10,14,.88);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.nav-btn {
+  border: 0;
+  background: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  min-width: 65px;
+}
+
+.nav-btn span {
+  font-size: 22px;
+}
+
+.nav-btn.active {
+  color: var(--red);
+}
+
+.toast {
+  position: fixed;
+  z-index: 30;
+  bottom: 95px;
+  left: 50%;
+  transform: translate(-50%, 15px);
+  background: #24242c;
+  border: 1px solid var(--border);
+  padding: 12px 18px;
+  border-radius: 13px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  padding: 35px 10px;
+  font-size: 14px;
+}
+
+body.light {
+  --bg: #edf0f6;
+  --panel: rgba(255,255,255,.63);
+  --border: rgba(30,35,50,.12);
+  --text: #161720;
+  --muted: #656879;
+}
+
+body.light header,
+body.light .bottom-nav {
+  background: rgba(240,242,248,.85);
+}
+
+@media (min-width: 650px) {
+  .hero, .section, .products {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  header {
+    padding-left: max(25px, calc((100% - 900px)/2));
+    padding-right: max(25px, calc((100% - 900px)/2));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">DARK <span>•</span> CARD</div>
+
+  <div class="header-actions">
+    <button class="icon-btn" id="themeBtn"
+      aria-label="Toggle theme">☾</button>
+    <button class="icon-btn" id="cartBtn"
+      aria-label="View cart">
+      🛒<span id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">NEXT LEVEL DESIGN</div>
+  <h1>YOUR STYLE.<br><span>YOUR WORLD.</span></h1>
+  <p>A premium glass interface with a dark aesthetic.
+     Explore the demo collection.</p>
+
+  <div class="hero-card">
+    <div class="card-top">
+      <div>
+        <div class="card-label">EXCLUSIVE COLLECTION</div>
+        <h2 style="margin-top:9px">Shadow Edition</h2>
+      </div>
+      <span style="font-size:27px">✦</span>
+    </div>
+
+    <div class="card-chip"></div>
+
+    <div class="card-number">•••• &nbsp; DEMO &nbsp; 0127</div>
+
+    <div class="card-bottom">
+      <div>
+        <small>DEMO HOLDER</small><br>
+        <strong>YOUR NAME</strong>
+      </div>
+      <small>NOT A PAYMENT CARD</small>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>Explore Collection</h2>
+    <small id="resultCount">4 items</small>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter active" data-category="All">All</button>
+    <button class="filter" data-category="Premium">Premium</button>
+    <button class="filter" data-category="Gaming">Gaming</button>
+    <button class="filter" data-category="Classic">Classic</button>
+  </div>
+</section>
+
+<main class="products" id="products"></main>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-page="Home">
+    <span>⌂</span>Home
+  </button>
+  <button class="nav-btn" data-page="Cart">
+    <span>🛒</span>Cart
+  </button>
+  <button class="nav-btn" data-page="Profile">
+    <span>◉</span>Profile
+  </button>
+</nav>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const items = [
+  {
+    id: 1,
+    name: "Shadow Edition",
+    category: "Premium",
+    price: 199,
+    color: "red",
+    desc: "A bold red and black demo design."
+  },
+  {
+    id: 2,
+    name: "Cyber Purple",
+    category: "Gaming",
+    price: 149,
+    color: "purple",
+    desc: "Neon-inspired gaming visual."
+  },
+  {
+    id: 3,
+    name: "Ocean Blue",
+    category: "Classic",
+    price: 99,
+    color: "blue",
+    desc: "Clean blue glass-inspired theme."
+  },
+  {
+    id: 4,
+    name: "Royal Gold",
+    category: "Premium",
+    price: 249,
+    color: "gold",
+    desc: "A golden premium demo design."
+  }
+];
+
+let cart = [];
+let currentCategory = "All";
+let cartView = false;
+
+const products = document.getElementById("products");
+const cartCount = document.getElementById("cartCount");
+const resultCount = document.getElementById("resultCount");
+const toast = document.getElementById("toast");
+
+function notify(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(notify.timer);
+  notify.timer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1800);
+}
+
+function render() {
+  let list = items.filter(item =>
+    currentCategory === "All" ||
+    item.category === currentCategory
+  );
+
+  if (cartView) {
+    list = items.filter(item => cart.includes(item.id));
+  }
+
+  resultCount.textContent = cartView
+    ? "Your cart"
+    : `${list.length} items`;
+
+  products.innerHTML = "";
+
+  if (!list.length) {
+    products.innerHTML =
+      '<div class="empty">Your cart is empty. Explore the collection!</div>';
+    return;
+  }
+
+  list.forEach(item => {
+    const inCart = cart.includes(item.id);
+
+    const article = document.createElement("article");
+    article.className = "product glass";
+
+    article.innerHTML = `
+      <div class="mini-card ${item.color}">
+        <small>DEMO COLLECTION</small>
+        <b>${item.name.toUpperCase()}</b>
+        <small>DESIGN PREVIEW • NOT FOR PAYMENT</small>
+      </div>
+      <h3>${item.name}</h3>
+      <p class="desc">${item.desc}</p>
+      <div class="product-footer">
+        <span class="price">₹${item.price}</span>
+        <button class="add-btn">
+          ${inCart ? "✓ Added" : "+ Add"}
+        </button>
+      </div>
+    `;
+
+    article.querySelector(".add-btn").addEventListener("click", () => {
+      if (cart.includes(item.id)) {
+        cart = cart.filter(id => id !== item.id);
+        notify("Removed from demo cart");
+      } else {
+        cart.push(item.id);
+        notify("Added to demo cart!");
+      }
+
+      updateCart();
+      render();
+    });
+
+    products.appendChild(article);
+  });
+}
+
+function updateCart() {
+  cartCount.textContent = cart.length;
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    currentCategory = button.dataset.category;
+    cartView = false;
+
+    document.querySelectorAll(".filter").forEach(btn =>
+      btn.classList.toggle("active", btn === button)
+    );
+
+    document.querySelectorAll(".nav-btn").forEach(btn =>
+      btn.classList.toggle("active", btn.dataset.page === "Home")
+    );
+
+    render();
+  });
+});
+
+document.getElementById("themeBtn").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+
+  document.getElementById("themeBtn").textContent =
+    document.body.classList.contains("light") ? "☀" : "☾";
+});
+
+document.getElementById("cartBtn").addEventListener("click", () => {
+  cartView = !cartView;
+  render();
+  notify(cartView ? "Demo cart opened" : "Collection opened");
+});
+
+document.querySelectorAll(".nav-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".nav-btn").forEach(btn =>
+      btn.classList.toggle("active", btn === button)
+    );
+
+    if (button.dataset.page === "Cart") {
+      cartView = true;
+      render();
+    } else if (button.dataset.page === "Home") {
+      cartView = false;
+      currentCategory = "All";
+
+      document.querySelectorAll(".filter").forEach(btn =>
+        btn.classList.toggle("active",
+          btn.dataset.category === "All")
+      );
+
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      notify("Demo profile — no account connected");
+    }
+  });
+});
+
+render();
+</script>
+
+</body>
+</html>
